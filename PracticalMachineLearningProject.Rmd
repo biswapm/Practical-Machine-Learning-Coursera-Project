@@ -124,8 +124,8 @@ Now, we estimate the performance of the model on the <b>validation</b> data set.
 predictTree <- predict(modelTree, validation, type = "class")
 confusionMatrix(factor(validation$classe), predictTree)
 set.seed(1)
-accuracy <- postResample(predictTree, validation$classe)
-ose <- 1 - as.numeric(confusionMatrix(validation$classe, predictTree)$overall[1])
+
+ose <- 1 - as.numeric(confusionMatrix(table(validation$classe, predictTree))$overall[1])
 rm(predictTree)
 rm(modelTree)
 ```  
